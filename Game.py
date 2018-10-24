@@ -1,16 +1,20 @@
 import pygame as pg
+from Goal import Goal
 
 pg.init()
 sw = 700
 sh = 700
 screen = pg.display.set_mode((sw, sh))
 done = False
-blue = 0
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
 clock = pg.time.Clock()
 fps = 60
 
 # Build the board
-# goal = new Goal()
+goal = Goal(screen, 100, 100, 300)
+pg.draw.circle(screen, (255, 0, 0), [100, 100], 300)
 
 while not done:
     for event in pg.event.get():
@@ -18,8 +22,7 @@ while not done:
             done = True
 
     ############################################ Fill Code
-    screen.fill((0, 0, blue))
-    blue += 1
+    screen.fill(BLUE)
     ############################################ Fill Code
 
     pg.display.flip()
