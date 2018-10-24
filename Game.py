@@ -13,8 +13,7 @@ clock = pg.time.Clock()
 fps = 60
 
 # Build the board
-goal = Goal(screen, 100, 100, 300)
-pg.draw.circle(screen, (255, 0, 0), [100, 100], 300)
+# pg.draw.circle(screen, (255, 0, 0), [100, 100], 300)
 
 while not done:
     for event in pg.event.get():
@@ -23,6 +22,7 @@ while not done:
 
     ############################################ Fill Code
     screen.fill(BLUE)
+    goal = Goal(screen, 100, 100, 10)
     ############################################ Fill Code
 
     pg.display.flip()
