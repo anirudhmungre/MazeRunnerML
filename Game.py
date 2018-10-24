@@ -1,11 +1,17 @@
-import pygame
+import pygame as pg
 
-pygame.init()
-s = pygame.display.set_mode((400, 300))
+pg.init()
+screen = pg.display.set_mode((400, 300))
 done = False
+blue = 0
+clock = pg.time.Clock()
+fps = 30
 
 while not done:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             done = True
-    pygame.display.flip()
+    screen.fill((0, 0, blue))
+    blue += 1
+    pg.display.flip()
+    clock.tick(fps)
