@@ -8,26 +8,6 @@ class Entity{
         this.acc = createVector()
     }
 
-    run(){
-        if (this.brain.step < this.brain.dir.length){
-            this.acc = this.brain.randDir()
-            // this.brain.step++
-        }
-
-        this.vel.add(this.acc)
-        this.vel.limit(5)
-        this.pos.add(this.vel)
-    }
-
-    update(){
-        if (!this.dead){
-            this.run()
-            if (this.pos.x < 0 || this.pos.y < 0 || this.pos.x > windowWidth || this.pos.y > windowHeight - footOffset){
-                this.dead = true
-            }
-        }
-    }
-
     show(){
         let theta = this.vel.heading() + radians(90)
         fill(175, 23, 23)
@@ -41,5 +21,22 @@ class Entity{
         vertex(3, 6)
         endShape(CLOSE)
         pop()
+    }
+
+    run(){
+        this.acc = this.brain.randDir()
+
+        this.vel.add(this.acc)
+        this.vel.limit(5)
+        this.pos.add(this.vel)
+    }
+
+    update(){
+        if (!this.dead){
+            this.run()
+            if (this.pos.x < 0 || this.pos.y < 0 || this.pos.x > windowWidth || this.pos.y > windowHeight - footOffset){
+                this.dead = true
+            }
+        }
     }
 }
