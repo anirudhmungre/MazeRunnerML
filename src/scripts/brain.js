@@ -15,15 +15,17 @@ class Brain{
 
     clone(){
         let clone = new Brain()
-        clone.dir = this.dir
+        clone.dir = this.dir.slice()
         return clone
     }
 
     mutate(){
         let mutateRate = 0.01,
-            randAngle
+            randAngle,
+            rand
         for(let i = 0; i < this.dir.length; i++){
-            if (random < mutateRate){
+            rand = random(1)
+            if (rand < mutateRate){
                 randAngle = random(2*PI)
                 this.dir[i] = p5.Vector.fromAngle(randAngle)
             }

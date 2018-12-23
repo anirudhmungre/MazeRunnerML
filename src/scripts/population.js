@@ -3,14 +3,17 @@ class Population{
         this.gen = 0
         this.entities = []
         for (let i = 0; i < size; i++){
-            this.entities.push(new Entity())
+            this.entities.push(new Entity(this.gen))
         }
+
+        this.bestEntity
     }
 
     show(){
         for(let i = 0; i < this.entities.length; i++){
             this.entities[i].show()
         }
+        this.entities[0].show()
     }
 
     update(){
@@ -20,14 +23,14 @@ class Population{
     }
 
     calcFitness(){
-        this.entities.forEach(entity => {
-            entity.calcFitness() 
-        })
+        for(let i = 0; i < this.entities.length; i++){
+            this.entities[i].calcFitness() 
+        }
     }
 
     allDead(){
         for(let i = 0; i < this.entities.length; i++){
-            if (!this.entities[i].dead){
+            if (!this.entities[i].dead && !this.entities[i].reachedGoal){
                 return false
             }
         }
@@ -35,16 +38,19 @@ class Population{
     }
 
     natSelection(){
+        this.gen++
         let newEntites = [],
             parent,
             fitnessSum = this.calcFitnessSum()
-        for(let i = 0; i < this.entities.length; i++){
+        this.setBest()
+        newEntites[0] = this.getBaby(this.bestEntity)
+        newEntites[0].isBest = true
+        for(let i = 1; i < this.entities.length; i++){
             parent = this.getParent(fitnessSum)
-            newEntites.push(parent.getBaby())
+            newEntites.push(this.getBaby(parent))
         }
 
         this.entities = newEntites
-        this.gen++
     }
 
     calcFitnessSum(){
@@ -62,13 +68,29 @@ class Population{
             fitLoc += this.entities[i].fitness
             if(fitLoc > rand){
                 return this.entities[i]
-            }  
+            }
         }
     }
 
+    getBaby(parent){
+        let baby = new Entity(this.gen)
+        baby.brain = parent.brain.clone()
+        return baby
+    }
+
     mutate(){
-        for(let i = 0; i < this.entities.length; i++){
+        for(let i = 1; i < this.entities.length; i++){
             this.entities[i].brain.mutate()
+        }
+    }
+
+    setBest(){
+        let max = 0
+        for(let i = 0; i < this.entities.length; i++){
+            if (this.entities[i].fitness > max){
+                max = this.entities[i].fitness
+                this.bestEntity = this.entities[i]
+            }
         }
     }
 }

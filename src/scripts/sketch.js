@@ -7,7 +7,7 @@ function setup(){
     background(51)
 
     goal = new Goal()
-    population = new Population(100)
+    population = new Population(50)
 }
 
 function resizeWindow(){
