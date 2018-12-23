@@ -2,6 +2,7 @@ class Entity{
     constructor(){
         this.brain = new Brain()
         this.dead = false
+        this.reachedGoal = false
 
         this.pos = createVector(windowWidth/2, windowHeight - 100 - footOffset)
         this.vel = createVector()
@@ -35,6 +36,10 @@ class Entity{
         if (!this.dead){
             this.run()
             if (this.pos.x < 0 || this.pos.y < 0 || this.pos.x > windowWidth || this.pos.y > windowHeight - footOffset){
+                this.dead = true
+            }
+            else if (dist(this.pos.x, this.pos.y, goal.pos.x, goal.pos.y) < goal.r){
+                this.reachedGoal = true
                 this.dead = true
             }
         }
