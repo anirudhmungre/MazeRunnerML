@@ -20,7 +20,7 @@ class Brain{
     }
 
     mutate(){
-        let mutateRate = 0.01,
+        let mutateRate = 0.05, // 5% chance a direction is mutated
             randAngle,
             rand
         for(let i = 0; i < this.dir.length; i++){
