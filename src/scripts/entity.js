@@ -7,6 +7,8 @@ class Entity{
         this.pos = createVector(windowWidth/2, windowHeight - 100 - footOffset)
         this.vel = createVector()
         this.acc = createVector()
+
+        this.fitness = 0
     }
 
     show(){
@@ -43,5 +45,16 @@ class Entity{
                 this.dead = true
             }
         }
+    }
+
+    calcFitness(){
+        let disFromGoal = (dist(this.pos.x, this.pos.y, goal.pos.x, goal.pos.y))
+        this.fitness = 1.0/(pow(disFromGoal, 2)) // Make fitness even better for getting any steps closer thats why square
+    }
+
+    getBaby(){
+        let baby = new Entity()
+        baby.brain = this.brain.clone()
+        return baby
     }
 }

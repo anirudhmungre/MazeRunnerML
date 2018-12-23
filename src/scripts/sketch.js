@@ -16,7 +16,15 @@ function resizeWindow(){
 
 function draw(){
     background(51)
-    goal.show()
-    population.update()
-    population.show()
+
+    if (population.allDead()){
+        population.calcFitness()
+        population.natSelection()
+        population.mutate()
+    }
+    else{
+        goal.show()
+        population.update()
+        population.show()
+    }
 }
