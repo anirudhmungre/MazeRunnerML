@@ -1,6 +1,6 @@
 class Goal{
     constructor(){
-        this.pos = createVector(windowWidth/2, 20)
+        this.pos = createVector(windowWidth/2, 80)
         this.r = 10
     }
     show(){

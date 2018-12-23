@@ -98,10 +98,8 @@ class Population{
                 this.bestEntity = this.entities[i]
             }
         }
-        console.log("Generation: " + this.gen)
         if (this.bestEntity.reachedGoal){
             this.minFin = this.bestEntity.brain.step
-            console.log("Minimum steps: " + this.minFin)
         }
     }
 }

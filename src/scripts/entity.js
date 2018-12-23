@@ -17,7 +17,7 @@ class Entity{
 
         let theta = this.vel.heading() + radians(90)
         if (this.isBest){
-            fill(255)
+            fill(0, 180, 0)
         }
         else{
             fill(175, 23, 23)
@@ -75,10 +75,4 @@ class Entity{
             this.fitness = 1.0/(disFromGoal*disFromGoal) // Make fitness even better for getting any steps closer thats why square
         }
     }
-
-    // getBaby(){
-    //     let baby = new Entity(this.gen)
-    //     baby.brain = this.brain.clone()
-    //     return baby
-    // }
 }

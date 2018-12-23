@@ -6,12 +6,16 @@ function setup(){
     createCanvas(windowWidth, windowHeight - footOffset)
     background(51)
 
+    textAlign(CENTER)
+    textSize(20)
+
     goal = new Goal()
     population = new Population(100)
 }
 
 function resizeWindow(){
     resizeCanvas(windowWidth, windowHeight - footOffset)
+    this.goal.pos.x = windowWidth/2
 }
 
 function draw(){
@@ -27,4 +31,7 @@ function draw(){
         population.update()
         population.show()
     }
+    noStroke()
+    fill(255, 31, 31)
+    text("Generation: " + population.gen + "\nMinimum Steps: " + population.minFin, windowWidth/2, 20)
 }
