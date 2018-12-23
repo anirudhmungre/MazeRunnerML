@@ -11,7 +11,6 @@ class Entity{
 
         this.fitness = 0
         this.gen = gen
-        console.log(this.gen)
     }
 
     show(){

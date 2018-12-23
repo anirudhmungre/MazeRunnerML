@@ -7,6 +7,7 @@ class Population{
         }
 
         this.bestEntity
+        this.minFin = Infinity
     }
 
     show(){
@@ -18,7 +19,12 @@ class Population{
 
     update(){
         for(let i = 0; i < this.entities.length; i++){
-            this.entities[i].update()
+            if(this.minFin < this.entities[i].brain.step){
+                this.entities[i].dead = true
+            }
+            else{
+                this.entities[i].update()
+            }
         }
     }
 
@@ -91,6 +97,11 @@ class Population{
                 max = this.entities[i].fitness
                 this.bestEntity = this.entities[i]
             }
+        }
+        console.log("Generation: " + this.gen)
+        if (this.bestEntity.reachedGoal){
+            this.minFin = this.bestEntity.brain.step
+            console.log("Minimum steps: " + this.minFin)
         }
     }
 }
