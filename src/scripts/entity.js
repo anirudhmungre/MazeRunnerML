@@ -3,7 +3,7 @@ class Entity{
         this.brain = new Brain()
         this.dead = false
 
-        this.pos = createVector(windowWidth/2, windowHeight/2)
+        this.pos = createVector(windowWidth/2, windowHeight - 100 - footOffset)
         this.vel = createVector()
         this.acc = createVector()
     }
