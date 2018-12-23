@@ -1,6 +1,6 @@
 class Entity{
     constructor(){
-        this.brain = new Brain(900)
+        this.brain = new Brain()
         this.dead = false
 
         this.pos = createVector(windowWidth/2, windowHeight/2)
@@ -10,8 +10,8 @@ class Entity{
 
     run(){
         if (this.brain.step < this.brain.dir.length){
-            this.acc = this.brain.dir[this.brain.step]
-            this.brain.step++
+            this.acc = this.brain.randDir()
+            // this.brain.step++
         }
 
         this.vel.add(this.acc)
@@ -22,9 +22,9 @@ class Entity{
     update(){
         if (!this.dead){
             this.run()
-        }
-        if (this.pos.x < 0 || this.pos.y < 0 || this.pos.x > windowWidth || this.pos.y > windowHeight - footOffset){
-            this.dead = true
+            if (this.pos.x < 0 || this.pos.y < 0 || this.pos.x > windowWidth || this.pos.y > windowHeight - footOffset){
+                this.dead = true
+            }
         }
     }
 

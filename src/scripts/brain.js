@@ -1,16 +1,15 @@
 class Brain{
-    constructor(size){
+    constructor(){
         this.dir = []
-        this.size = size
-        this.step = 0
-        this.randomize()
+        // this.size = size
+        this.step = -1
     }
 
-    randomize(){
+    randDir(){
         let randAngle
-        for (let i = 0; i < this.size; i++){
-            randAngle = random(2*PI)
-            this.dir[i] = p5.Vector.fromAngle(randAngle)
-        }
+        randAngle = random(2*PI)
+        this.dir.push(p5.Vector.fromAngle(randAngle))
+        this.step++
+        return this.dir[this.dir.length - 1]
     }
 }
