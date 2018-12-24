@@ -62,6 +62,13 @@ class Entity{
             else if (dist(this.pos.x, this.pos.y, goal.pos.x, goal.pos.y) < goal.r){
                 this.reachedGoal = true
             }
+            else{
+                for(let i = 0; i < obst.length; i++){
+                    if(obst[i].intersects(this)){
+                        this.dead = true
+                    }
+                }
+            }
         }
     }
 

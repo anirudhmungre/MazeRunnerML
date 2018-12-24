@@ -1,7 +1,8 @@
 var population,
     goal,
     footOffset = 100,
-    numEnt
+    numEnt,
+    obst
 
 function setup(){
     let myCanvas = createCanvas(windowWidth, windowHeight - footOffset)
@@ -12,7 +13,6 @@ function setup(){
 
 function resizeWindow(){
     resizeCanvas(windowWidth, windowHeight - footOffset)
-    this.goal.pos.x = windowWidth/2
 }
 
 function draw(){
@@ -25,6 +25,10 @@ function draw(){
     }
     else{
         goal.show()
+        for(let i = 0; i < obst.length; i++){
+            obst[i].show()
+        }
+        // obst.show()
         population.update()
         population.show()
     }
@@ -43,6 +47,10 @@ function resetSketch(){
 
     if(numEnt > 0){
         goal = new Goal()
+        obst = []
+        for(let i = 0; i < document.getElementById("numObstacles").value; i++){
+            obst.push(new Obstacle())
+        }
         population = new Population(numEnt)
     }
 }
