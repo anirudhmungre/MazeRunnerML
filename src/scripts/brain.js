@@ -1,7 +1,6 @@
 class Brain{
     constructor(){
         this.dir = []
-        // this.size = size
         this.step = -1
     }
 
@@ -20,7 +19,7 @@ class Brain{
     }
 
     mutate(){
-        let mutateRate = 0.05, // 5% chance a direction is mutated
+        let mutateRate = 0.03, // 3% chance a direction is mutated
             randAngle,
             rand
         for(let i = 0; i < this.dir.length; i++){

@@ -16,6 +16,18 @@
 </head>
 <body>
     <div id="myCanvas"></div>
-    <div id="controls"></div>
+    <div id="controls">
+        <form>
+            <input type="number" id="numEntities" min="1" step="1" value="100" required>
+            <input type="button" id="resetSketch" value="Reset">
+        </form>
+        
+        <button type="button" id="killAll">Kill All</button>
+
+        <label class="switch">
+                <input type="checkbox" id="showBest" checked="true">
+                <span class="slider round"></span>
+        </label>
+    </div>
 </body>
 </html>

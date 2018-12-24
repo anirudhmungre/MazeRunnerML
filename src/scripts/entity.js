@@ -27,9 +27,9 @@ class Entity{
         translate(this.pos.x,this.pos.y)
         rotate(theta)
         beginShape()
-        vertex(0, -6)
-        vertex(-3, 6)
-        vertex(3, 6)
+        vertex(0, -8)
+        vertex(-4, 8)
+        vertex(4, 8)
         endShape(CLOSE)
         pop()
     }
@@ -49,7 +49,7 @@ class Entity{
         }
 
         this.vel.add(this.acc)
-        this.vel.limit(5)
+        this.vel.limit(10)
         this.pos.add(this.vel)
     }
 

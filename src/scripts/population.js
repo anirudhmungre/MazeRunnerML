@@ -11,8 +11,10 @@ class Population{
     }
 
     show(){
-        for(let i = 0; i < this.entities.length; i++){
-            this.entities[i].show()
+        if(document.getElementById("showBest").checked){
+            for(let i = 1; i < this.entities.length; i++){
+                this.entities[i].show()
+            }
         }
         this.entities[0].show()
     }
