@@ -28,7 +28,6 @@ function draw(){
         for(let i = 0; i < obst.length; i++){
             obst[i].show()
         }
-        // obst.show()
         population.update()
         population.show()
     }
