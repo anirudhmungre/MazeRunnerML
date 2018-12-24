@@ -75,7 +75,7 @@ class Entity{
     calcFitness(){
         let disFromGoal
         if(this.reachedGoal){
-            this.fitness = 1.0/16.0 + 10000.0/parseFloat(this.brain.step*this.brain.step)
+            this.fitness = 10000.0/(this.brain.step*this.brain.step)
         }
         else{
             disFromGoal = dist(this.pos.x, this.pos.y, goal.pos.x, goal.pos.y)
