@@ -78,12 +78,10 @@ class Entity{
             this.fitness = 10000.0/(this.brain.step*this.brain.step)
         }
         else if(needNew){
-            console.log("Too many times same!")
             let yDistThis = abs(goal.pos.y-this.pos.y)
             let yDistBest = abs(goal.pos.y-best.pos.y)
             disFromGoal = dist(this.pos.x, this.pos.y, goal.pos.x, goal.pos.y)
             if (yDistThis < yDistBest){
-                console.log(yDistThis + " < " + yDistBest)
                 this.fitness = 10000.0/(yDistThis*yDistThis)
             }
             else{

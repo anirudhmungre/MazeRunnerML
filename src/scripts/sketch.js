@@ -19,7 +19,6 @@ function draw(){
     background(51)
 
     if (population.allDead()){
-        console.log(population.bestCount)
         population.calcFitness()
         population.natSelection()
         population.mutate()
