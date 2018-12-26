@@ -6,6 +6,7 @@ class Population{
             this.entities.push(new Entity(this.gen))
         }
 
+        this.bestCount = 0
         this.bestEntity
         this.minFin = Infinity
     }
@@ -31,8 +32,12 @@ class Population{
     }
 
     calcFitness(){
+        let needNew = false
+        if (this.bestCount > 5){
+            needNew = true
+        }
         for(let i = 0; i < this.entities.length; i++){
-            this.entities[i].calcFitness() 
+            this.entities[i].calcFitness(needNew, this.bestEntity) 
         }
     }
 
@@ -99,6 +104,12 @@ class Population{
                 max = this.entities[i].fitness
                 this.bestEntity = this.entities[i]
             }
+        }
+        if (this.entities[0] == this.bestEntity){
+            this.bestCount++
+        }
+        else{
+            this.bestCount = 0
         }
         if (this.bestEntity.reachedGoal){
             this.minFin = this.bestEntity.brain.step
